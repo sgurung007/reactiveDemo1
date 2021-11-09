@@ -69,7 +69,13 @@ public class MdcApplication {
                 }
             };
 
-            uidOptional.ifPresentOrElse(ifPresent, orElse);
+            if(uidOptional.isPresent()){
+                ifPresent.accept("");
+            }else {
+                orElse.run();
+            }
+
+//            uidOptional.ifPresentOrElse(ifPresent, orElse);
         };
 
     }
